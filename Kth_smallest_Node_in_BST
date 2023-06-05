@@ -1,0 +1,45 @@
+#include <bits/stdc++.h> 
+/************************************************************
+
+    Following is the TreeNode class structure
+
+    template <typename T>
+    class TreeNode {
+       public:
+        T data;
+        TreeNode<T> *left;
+        TreeNode<T> *right;
+
+        TreeNode(T data) {
+            this->data = data;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+************************************************************/
+
+// Approach
+// Hum inorder traversal karenge aur k element hote hi ruk jaenge.
+//since inorder traversal me hum tree ke elements ko sorted order me paate hai,yaha se hum nikal lenge
+
+void inorder(TreeNode<int>* root,int k,vector<int>& ans){
+        if(root==NULL)
+            return;
+        if(ans.size()==k) return;
+        inorder(root->left,k,ans);
+        ans.push_back(root->data);
+        if(ans.size()==k) return;
+        inorder(root->right,k,ans);
+    }
+
+int kthSmallest(TreeNode<int> *root, int k)
+{
+	//	Write the code here.
+
+        vector<int> ans;
+        inorder(root,k,ans);
+        return ans[k-1];
+
+
+}
