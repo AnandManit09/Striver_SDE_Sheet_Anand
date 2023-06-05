@@ -26,7 +26,7 @@
 void inorder(TreeNode<int>* root,int k,vector<int>& ans){
         if(root==NULL)
             return;
-        if(ans.size()==k) return;
+        //if(ans.size()==k) return;
         inorder(root->left,k,ans);
         ans.push_back(root->data);
         if(ans.size()==k) return;
